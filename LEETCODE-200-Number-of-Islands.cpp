@@ -15,8 +15,10 @@ public:
                     int newrow = curr_row + delrow, newcol = curr_col + delcol;
                     if(newrow>=0 and newrow<grid.size() and newcol>=0 and newcol<grid[0].size()) {
                         if(!visited[newrow][newcol] and grid[newrow][newcol] == '1') {
-                            visited[newrow][newcol] = true;
-                            q.push({newrow,newcol});
+                            if(!(newrow != curr_row and newcol != curr_col)) {
+                                visited[newrow][newcol] = true;
+                                q.push({newrow,newcol});
+                            }
                         }
                     }
                 }
