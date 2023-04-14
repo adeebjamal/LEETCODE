@@ -12,7 +12,7 @@ public:
             vector<int> row;
             bool flag = true;
             for(auto& itr: mp) {
-                if(itr.second >= 1) {
+                if(itr.second > 0) {
                     row.push_back(itr.first);
                     itr.second--;
                     flag = false;
