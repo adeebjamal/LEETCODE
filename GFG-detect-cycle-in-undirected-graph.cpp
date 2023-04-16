@@ -21,7 +21,7 @@ class Solution {
         }
         return false;
     }
-  public:
+    public:
     bool isCycle(int V, vector<int> adj[]) {
         vector<bool> visited(V,false);
         for(int node = 0; node < V; node++) {
