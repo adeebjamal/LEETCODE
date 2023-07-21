@@ -25,6 +25,25 @@ public:
         return sum;
     }
 };
+class Solution2 {
+public:
+    int sum = 0;
+    void dfs(TreeNode* root, bool flag) {
+        if(root == NULL) {
+            return;
+        }
+        if(root->left == NULL and root->right == NULL and flag == true) {
+            sum+= root->val;
+            return;
+        }
+        dfs(root->left,true);
+        dfs(root->right,false);
+    }
+    int sumOfLeftLeaves(TreeNode* root) {
+        dfs(root,false);
+        return sum;
+    }
+};
 int main() {
     TreeNode* root=new TreeNode(3);
     root->left=new TreeNode(9);
