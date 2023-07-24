@@ -25,3 +25,27 @@ public:
         return maxi;
     }
 };
+class Solution {
+public:
+    int answer = INT_MIN;
+    void diff(TreeNode* root, int& rootVal) {
+        if(root == NULL) {
+            return;
+        }
+        answer = max(answer,abs(root->val - rootVal));
+        diff(root->left,rootVal);
+        diff(root->right,rootVal);
+    }
+    void dfs(TreeNode* root) {
+        if(root == NULL) {
+            return;
+        }
+        diff(root,root->val);
+        dfs(root->left);
+        dfs(root->right);
+    }
+    int maxAncestorDiff(TreeNode* root) {
+        dfs(root);
+        return answer;
+    }
+};
