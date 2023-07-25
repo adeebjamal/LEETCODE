@@ -24,6 +24,33 @@ public:
         return root;
     }
 };
+class Solution {
+public:
+    void hash(TreeNode* root, int& flag) {
+        if(root == NULL) {
+            return;
+        }
+        if(root->val == 1) {
+            flag++;
+            return;
+        }
+        hash(root->left,flag);
+        hash(root->right,flag);
+    }
+    TreeNode* pruneTree(TreeNode* root) {
+        if(root == NULL) {
+            return NULL;
+        }
+        int flag = 0;
+        hash(root,flag);
+        if(flag == 0) {
+            return NULL;
+        }
+        root->left = pruneTree(root->left);
+        root->right = pruneTree(root->right);
+        return root;
+    }
+};
 int main() {
 
     return 0;
