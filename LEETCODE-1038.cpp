@@ -11,14 +11,14 @@ struct TreeNode {
 class Solution {
 public:
     vector<int> nums;
-    int binarySearch(int& num) {
+    int binarySearch(int& key) {
         int start=0, end=nums.size()-1;
         while(start <= end) {
             int mid=(start+end)/2;
-            if(nums[mid] == num) {
+            if(nums[mid] == key) {
                 return mid;
             }
-            else if(nums[mid] > num) {
+            else if(nums[mid] > key) {
                 end=mid-1;
             }
             else {
@@ -31,8 +31,8 @@ public:
         if(root == NULL) {
             return;
         }
-        int index = binarySearch(root->val);
-        root->val = accumulate(nums.begin()+index,nums.end(),0);
+        int index=binarySearch(root->val);
+        root->val=accumulate(nums.begin()+index,nums.end(),0);
         solve(root->left);
         solve(root->right);
     }
@@ -44,9 +44,9 @@ public:
         nums.push_back(root->val);
         dfs(root->right);
     }
-    TreeNode* convertBST(TreeNode* root) {
+    TreeNode* bstToGst(TreeNode* root) {
         if(root == NULL) {
-            return NULL;
+            return;
         }
         dfs(root);
         solve(root);
