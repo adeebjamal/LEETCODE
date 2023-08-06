@@ -71,6 +71,7 @@ public:
             if(visited[node] == false) {
                 answer++;
                 this->bfs(node,graph,visited);
+                // this->dfs(node,graph,visited);
             }
         }
         return answer;
