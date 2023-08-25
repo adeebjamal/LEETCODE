@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 int solve(int index, int length, vector<int>& price, vector<vector<int>>& dp) {
-    if(index<0) {
+    if(index < 0) {
         return 0;
     }
     if(dp[index][length] != -1) {
