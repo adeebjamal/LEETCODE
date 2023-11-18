@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class LEETCODE_1615_Maximal_Network_Rank {
     public int maximalNetworkRank(int n, int[][] roads) {
         Map<Integer,Integer> neighbours = new HashMap<>();
         int[][] connected = new int[n][n];

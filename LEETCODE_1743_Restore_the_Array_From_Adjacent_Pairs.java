@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class LEETCODE_1743_Restore_the_Array_From_Adjacent_Pairs {
     public void dfs(int source, Map<Integer,List<Integer>> graph, Set<Integer> visited, List<Integer> answer) {
         visited.add(source);
         answer.add(source);
