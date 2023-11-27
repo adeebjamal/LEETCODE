@@ -15,6 +15,7 @@
         "valarray": "cpp",
         "deque": "cpp",
         "string": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "unordered_set": "cpp"
     }
 }
