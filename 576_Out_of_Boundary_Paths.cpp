@@ -4,14 +4,14 @@ class Solution {
     int max_steps = 0;
     unordered_map<string, int> dp;
     int f(int row, int col, int steps, int& rows, int& cols) {
-        if (row < 0 or col < 0 or row >= rows or col >= cols) {
+        if(row < 0 or col < 0 or row >= rows or col >= cols) {
             return 1;
         }
-        if (steps >= this->max_steps) {
+        if(steps >= this->max_steps) {
             return 0;
         }
         string key = to_string(row) + "_" + to_string(col) + "_" + to_string(steps);
-        if (dp.find(key) != dp.end()) {
+        if(dp.find(key) != dp.end()) {
             return dp[key];
         }
         int mod = 1e9 + 7;
