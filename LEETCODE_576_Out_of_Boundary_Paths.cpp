@@ -3,7 +3,7 @@ using namespace std;
 class Solution {
     int max_steps = 0;
     unordered_map<string, int> dp;
-    int f(int row, int col, int steps, int& rows, int& cols) {
+    int f1(int row, int col, int steps, int& rows, int& cols) {
         if(row < 0 or col < 0 or row >= rows or col >= cols) {
             return 1;
         }
@@ -15,10 +15,10 @@ class Solution {
             return dp[key];
         }
         int mod = 1e9 + 7;
-        int up = this->f(row - 1, col, steps + 1, rows, cols);
-        int down = this->f(row + 1, col, steps + 1, rows, cols);
-        int left = this->f(row, col - 1, steps + 1, rows, cols);
-        int right = this->f(row, col + 1, steps + 1, rows, cols);
+        int up = this->f1(row - 1, col, steps + 1, rows, cols);
+        int down = this->f1(row + 1, col, steps + 1, rows, cols);
+        int left = this->f1(row, col - 1, steps + 1, rows, cols);
+        int right = this->f1(row, col + 1, steps + 1, rows, cols);
         return dp[key] = ((up % mod + down % mod) % mod + (left % mod + right % mod) % mod) % mod;
     }
     int f2(int row, int col, int steps, int& rows, int& cols, vector<vector<vector<int>>>& DP) {
@@ -32,17 +32,17 @@ class Solution {
             return DP[row][col][steps];
         }
         int mod = 1e9 + 7;
-        int up = this->f(row - 1, col, steps + 1, rows, cols);
-        int down = this->f(row + 1, col, steps + 1, rows, cols);
-        int left = this->f(row, col - 1, steps + 1, rows, cols);
-        int right = this->f(row, col + 1, steps + 1, rows, cols);
+        int up = this->f2(row - 1, col, steps + 1, rows, cols, DP);
+        int down = this->f2(row + 1, col, steps + 1, rows, cols, DP);
+        int left = this->f2(row, col - 1, steps + 1, rows, cols, DP);
+        int right = this->f2(row, col + 1, steps + 1, rows, cols, DP);
         return DP[row][col][steps] = ((up % mod + down % mod) % mod + (left % mod + right % mod) % mod) % mod;
     }
     public:
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         this->max_steps = maxMove;
         vector<vector<vector<int>>> DP(m, vector<vector<int>>(n, vector<int>(maxMove + 1, -1)));
-        // return this->f(startRow, startColumn, 0, m, n);
+        // return this->f1(startRow, startColumn, 0, m, n);
         return this->f2(startRow, startColumn, 0, m, n, DP);
     }
 };
