@@ -7,10 +7,6 @@ public:
         vector<int> answer(length, 0);
         stack<pair<int,int>> st;
         for(int i = 0; i < length; i++) {
-            if(st.empty()) {
-                st.push({temperatures[i], i});
-                continue;
-            }
             while(st.top().first < temperatures[i]) {
                 answer[st.top().second] = i - st.top().second;
                 st.pop();
