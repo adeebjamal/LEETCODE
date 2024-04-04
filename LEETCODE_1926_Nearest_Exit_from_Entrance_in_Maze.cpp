@@ -27,7 +27,7 @@ class Solution {
             }
         }
     }
-public:
+    public:
     int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
         this->rows = maze.size(), this->cols = maze[0].size();
         vector<vector<bool>> visited(this->rows, vector<bool>(this->cols, false));
